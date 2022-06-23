@@ -44,3 +44,77 @@ table {
 }
 
 /* My CSS */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+div.container {
+  height: 60vh;
+  width: 40vw;
+  background-color: #141414;
+}
+
+div.display {
+  height: 14.29%;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+div.numbers {
+  height: 42.88%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: lightgray;
+}
+div.numbers p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.3%;
+  height: 33.3%;
+}
+
+p.zero {
+  height: 14.29%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+
+div.operators {
+  height: 14.29%;
+  width: 100%;
+  display: flex;
+
+  background-color: gold;
+}
+div.operators p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
+
+div.special {
+  height: 14.29%;
+  width: 100%;
+  background-color: goldenrod;
+  display: flex;
+}
+div.special p {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
