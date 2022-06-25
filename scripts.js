@@ -58,11 +58,13 @@ adi.addEventListener('click', () => {
     firstNum = displayTextInNum;
     display.textContent = "";
     operation = add;
-  } else if (operatorsClicked > 1) {
+  } else if (operatorsClicked == 2) {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = add
     display.textContent = "";
+  } else if (operatorsClicked > 2) {
+    
   }
 
   console.log("firstNum", firstNum)
@@ -82,7 +84,7 @@ sub.addEventListener('click', () => {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = subtract
-    display.textContent = "";
+    display.textContent = firstNum;
   }
 
   console.log("firstNum", firstNum)
@@ -136,18 +138,22 @@ equ.addEventListener('click', () => {
   secondNum = displayTextInNum
   if (operation == add) {
     finalAnswer = operate(add,firstNum,secondNum)
+    display.textContent = finalAnswer;
 
     console.log(finalAnswer)
   } else if (operation == subtract) {
     finalAnswer = operate(subtract,firstNum,secondNum)
+    display.textContent = finalAnswer;
 
     console.log(finalAnswer)
   } else if (operation == multiply) {
     finalAnswer = operate(multiply,firstNum,secondNum)
+    display.textContent = finalAnswer;
 
     console.log(finalAnswer)
   } else if (operation == divide) {
     finalAnswer = operate(divide,firstNum,secondNum)
+    display.textContent = finalAnswer;
 
     console.log(finalAnswer)
   }
