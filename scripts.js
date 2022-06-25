@@ -28,12 +28,133 @@ const zero = document.querySelector('.zero')
 
 const allNumbers = [one, two, three, four, five, six, seven, eight, nine, zero]
 
+let firstNum;
+let secondNum;
+
+let displayTextInNum;
 for (let i = 0; i < allNumbers.length; i++) {
   let num = allNumbers[i].textContent
   allNumbers[i].addEventListener('click', () => {
     display.textContent += num;
-    
-    let displayTextInNum = parseInt(display.textContent)
-    console.log(displayTextInNum)
+
+    displayTextInNum = parseInt(display.textContent)
   })
 }
+
+const adi = document.querySelector('.addition')
+const sub = document.querySelector('.subtraction')
+const mul = document.querySelector('.multiplication')
+const dvi = document.querySelector('.division')
+const equ = document.querySelector('.equals')
+
+let operation;
+let finalAnswer;
+
+let operatorsClicked = 0;
+adi.addEventListener('click', () => {
+  operatorsClicked += 1
+
+  if (operatorsClicked == 1) {
+    firstNum = displayTextInNum;
+    display.textContent = "";
+    operation = add;
+  } else if (operatorsClicked > 1) {
+    secondNum = displayTextInNum
+    firstNum = operate(operation,firstNum,secondNum)
+    operation = add
+    display.textContent = "";
+  }
+
+  console.log("firstNum", firstNum)
+  console.log("secondNum", secondNum)
+  console.log("operation", operation)
+  console.log("finalAnswer", finalAnswer)
+  console.log("operatorsClicked", operatorsClicked)
+});
+sub.addEventListener('click', () => {
+  operatorsClicked += 1
+
+  if (operatorsClicked == 1) {
+    firstNum = displayTextInNum;
+    display.textContent = "";
+    operation = subtract;
+  } else if (operatorsClicked > 1) {
+    secondNum = displayTextInNum
+    firstNum = operate(operation,firstNum,secondNum)
+    operation = subtract
+    display.textContent = "";
+  }
+
+  console.log("firstNum", firstNum)
+  console.log("secondNum", secondNum)
+  console.log("operation", operation)
+  console.log("finalAnswer", finalAnswer)
+  console.log("operatorsClicked", operatorsClicked)
+});
+mul.addEventListener('click', () => {
+  operatorsClicked += 1
+
+  if (operatorsClicked == 1) {
+    firstNum = displayTextInNum;
+    display.textContent = "";
+    operation = multiply;
+  } else if (operatorsClicked > 1) {
+    secondNum = displayTextInNum
+    firstNum = operate(operation,firstNum,secondNum)
+    operation = multiply;
+    display.textContent = "";
+  }
+
+  console.log("firstNum", firstNum)
+  console.log("secondNum", secondNum)
+  console.log("operation", operation)
+  console.log("finalAnswer", finalAnswer)
+  console.log("operatorsClicked", operatorsClicked)
+});
+dvi.addEventListener('click', () => {
+  operatorsClicked += 1
+
+  if (operatorsClicked == 1) {
+    firstNum = displayTextInNum;
+    display.textContent = "";
+    operation = divide;
+  } else if (operatorsClicked > 1) {
+    secondNum = displayTextInNum
+    firstNum = operate(operation,firstNum,secondNum)
+    operation = divide;
+    display.textContent = "";
+  }
+
+  console.log("firstNum", firstNum)
+  console.log("secondNum", secondNum)
+  console.log("operation", operation)
+  console.log("finalAnswer", finalAnswer)
+  console.log("operatorsClicked", operatorsClicked)
+});
+
+equ.addEventListener('click', () => {
+  secondNum = displayTextInNum
+  if (operation == add) {
+    finalAnswer = operate(add,firstNum,secondNum)
+
+    console.log(finalAnswer)
+  } else if (operation == subtract) {
+    finalAnswer = operate(subtract,firstNum,secondNum)
+
+    console.log(finalAnswer)
+  } else if (operation == multiply) {
+    finalAnswer = operate(multiply,firstNum,secondNum)
+
+    console.log(finalAnswer)
+  } else if (operation == divide) {
+    finalAnswer = operate(divide,firstNum,secondNum)
+
+    console.log(finalAnswer)
+  }
+
+  console.log("firstNum", firstNum)
+  console.log("secondNum", secondNum)
+  console.log("operation", operation)
+  console.log("finalAnswer", finalAnswer)
+  console.log("operatorsClicked", operatorsClicked)
+})
