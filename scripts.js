@@ -146,6 +146,10 @@ dvi.addEventListener('click', () => {
 
 equ.addEventListener('click', () => {
   secondNum = displayTextInNum
+
+  operatorsClicked = 0;
+  presentingNums = false;
+  
   if (operation == add) {
     finalAnswer = operate(add,firstNum,secondNum)
     display.textContent = finalAnswer;
