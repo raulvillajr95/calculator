@@ -32,10 +32,18 @@ let firstNum;
 let secondNum;
 
 let displayTextInNum;
+
+let presentingNums = false;
 for (let i = 0; i < allNumbers.length; i++) {
   let num = allNumbers[i].textContent
   allNumbers[i].addEventListener('click', () => {
-    display.textContent += num;
+    if (presentingNums == false) {
+      display.textContent = "";
+      presentingNums = true;
+      display.textContent += num;
+    } else if (presentingNums == true) {
+      display.textContent += num;
+    }
 
     displayTextInNum = parseInt(display.textContent)
   })
@@ -52,19 +60,17 @@ let finalAnswer;
 
 let operatorsClicked = 0;
 adi.addEventListener('click', () => {
-  operatorsClicked += 1
+  operatorsClicked += 1;
+  presentingNums = false;
 
   if (operatorsClicked == 1) {
     firstNum = displayTextInNum;
-    display.textContent = "";
     operation = add;
-  } else if (operatorsClicked == 2) {
+  } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = add
-    display.textContent = "";
-  } else if (operatorsClicked > 2) {
-    
+    display.textContent = firstNum;
   }
 
   console.log("firstNum", firstNum)
@@ -74,13 +80,13 @@ adi.addEventListener('click', () => {
   console.log("operatorsClicked", operatorsClicked)
 });
 sub.addEventListener('click', () => {
-  operatorsClicked += 1
+  operatorsClicked += 1;
+  presentingNums = false;
 
   if (operatorsClicked == 1) {
     firstNum = displayTextInNum;
-    display.textContent = "";
     operation = subtract;
-  } else if (operatorsClicked > 1) {
+  } else if (operatorsClicked == 2) {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = subtract
@@ -95,16 +101,16 @@ sub.addEventListener('click', () => {
 });
 mul.addEventListener('click', () => {
   operatorsClicked += 1
+  presentingNums = false;
 
   if (operatorsClicked == 1) {
     firstNum = displayTextInNum;
-    display.textContent = "";
     operation = multiply;
   } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = multiply;
-    display.textContent = "";
+    display.textContent = firstNum;
   }
 
   console.log("firstNum", firstNum)
@@ -115,16 +121,16 @@ mul.addEventListener('click', () => {
 });
 dvi.addEventListener('click', () => {
   operatorsClicked += 1
+  presentingNums = false;
 
   if (operatorsClicked == 1) {
     firstNum = displayTextInNum;
-    display.textContent = "";
     operation = divide;
   } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
     firstNum = operate(operation,firstNum,secondNum)
     operation = divide;
-    display.textContent = "";
+    display.textContent = firstNum;
   }
 
   console.log("firstNum", firstNum)
