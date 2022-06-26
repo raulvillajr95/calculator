@@ -25,6 +25,7 @@ const seven = document.querySelector('.seven')
 const eight = document.querySelector('.eight')
 const nine = document.querySelector('.nine')
 const zero = document.querySelector('.zero')
+const period = document.querySelector('.period')
 
 const allNumbers = [one, two, three, four, five, six, seven, eight, nine, zero]
 
@@ -44,10 +45,13 @@ for (let i = 0; i < allNumbers.length; i++) {
     } else if (presentingNums == true) {
       display.textContent += num;
     }
-
-    displayTextInNum = parseInt(display.textContent)
+    displayTextInNum = parseFloat(display.textContent)
   })
 }
+
+period.addEventListener('click', () => {
+  display.textContent += ".";
+})
 
 const adi = document.querySelector('.addition')
 const sub = document.querySelector('.subtraction')
