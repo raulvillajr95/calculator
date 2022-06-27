@@ -49,7 +49,24 @@ for (let i = 0; i < allNumbers.length; i++) {
   })
 }
 
+function checkForDecimals() {
+  let periods = display.textContent.split('')
+
+  let periodCount = 0;
+  
+  for (let i = 0; i < periods.length; i++) {
+    if (periods[i] == '.') {
+      periodCount += 1;
+    }
+  }
+
+  return periodCount;
+}
+
 period.addEventListener('click', () => {
+  if (checkForDecimals() >= 1) {
+    return;
+  }
   display.textContent += ".";
 })
 
@@ -58,6 +75,7 @@ const sub = document.querySelector('.subtraction')
 const mul = document.querySelector('.multiplication')
 const dvi = document.querySelector('.division')
 const equ = document.querySelector('.equals')
+const ce = document.querySelector('.clear')
 
 let operation;
 let finalAnswer;
@@ -72,6 +90,15 @@ adi.addEventListener('click', () => {
     operation = add;
   } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
+
+    if(operation == divide && secondNum == 0) {
+      display.textContent = "Error";
+        setTimeout(() => {
+          clear()
+        }, 2000)
+      return;
+    }
+    
     firstNum = operate(operation,firstNum,secondNum)
     operation = add
     display.textContent = firstNum;
@@ -92,6 +119,15 @@ sub.addEventListener('click', () => {
     operation = subtract;
   } else if (operatorsClicked == 2) {
     secondNum = displayTextInNum
+
+    if(operation == divide && secondNum == 0) {
+      display.textContent = "Error";
+        setTimeout(() => {
+          clear()
+        }, 2000)
+      return;
+    }
+
     firstNum = operate(operation,firstNum,secondNum)
     operation = subtract
     display.textContent = firstNum;
@@ -112,6 +148,15 @@ mul.addEventListener('click', () => {
     operation = multiply;
   } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
+
+    if(operation == divide && secondNum == 0) {
+      display.textContent = "Error";
+        setTimeout(() => {
+          clear()
+        }, 2000)
+      return;
+    }
+
     firstNum = operate(operation,firstNum,secondNum)
     operation = multiply;
     display.textContent = firstNum;
@@ -132,6 +177,15 @@ dvi.addEventListener('click', () => {
     operation = divide;
   } else if (operatorsClicked > 1) {
     secondNum = displayTextInNum
+
+    if(operation == divide && secondNum == 0) {
+      display.textContent = "Error";
+        setTimeout(() => {
+          clear()
+        }, 2000)
+      return;
+    }
+
     firstNum = operate(operation,firstNum,secondNum)
     operation = divide;
     display.textContent = firstNum;
@@ -149,7 +203,7 @@ equ.addEventListener('click', () => {
 
   operatorsClicked = 0;
   presentingNums = false;
-  
+
   if (operation == add) {
     finalAnswer = operate(add,firstNum,secondNum)
     display.textContent = finalAnswer;
@@ -166,8 +220,15 @@ equ.addEventListener('click', () => {
 
     console.log(finalAnswer)
   } else if (operation == divide) {
-    finalAnswer = operate(divide,firstNum,secondNum)
-    display.textContent = finalAnswer;
+    if (secondNum == 0) {
+      display.textContent = "Error";
+      setTimeout(() => {
+        clear()
+      }, 2000)
+    } else {
+      finalAnswer = operate(divide,firstNum,secondNum)
+      display.textContent = finalAnswer;
+    }
 
     console.log(finalAnswer)
   }
@@ -177,4 +238,16 @@ equ.addEventListener('click', () => {
   console.log("operation", operation)
   console.log("finalAnswer", finalAnswer)
   console.log("operatorsClicked", operatorsClicked)
+})
+
+function clear() {
+  secondNum = undefined;
+  operation = undefined;
+  finalAnswer = undefined;
+  operatorsClicked = 0;
+  presentingNums = false;
+  display.textContent = "0";
+}
+ce.addEventListener('click', () => {
+  clear();
 })
