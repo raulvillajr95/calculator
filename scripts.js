@@ -49,6 +49,24 @@ for (let i = 0; i < allNumbers.length; i++) {
   })
 }
 
+// Keyboard Support
+window.addEventListener('keydown', () => {
+  let num = window.event.key
+  let numbers = ['0','1','2','3','4','5','6','7','8','9']
+  if (numbers.includes(num)) {
+    if (presentingNums == false) {
+      display.textContent = "";
+      presentingNums = true;
+      display.textContent += num;
+    } else if (presentingNums == true) {
+  
+      display.textContent += num;
+    }
+  } else if (num == 'Backspace') {
+    backspace()
+  }
+})
+
 function checkForDecimals() {
   let periods = display.textContent.split('')
 
@@ -76,6 +94,7 @@ const mul = document.querySelector('.multiplication')
 const dvi = document.querySelector('.division')
 const equ = document.querySelector('.equals')
 const ce = document.querySelector('.clear')
+const back = document.querySelector('.backspace')
 
 let operation;
 let finalAnswer;
@@ -103,12 +122,6 @@ adi.addEventListener('click', () => {
     operation = add
     display.textContent = firstNum;
   }
-
-  console.log("firstNum", firstNum)
-  console.log("secondNum", secondNum)
-  console.log("operation", operation)
-  console.log("finalAnswer", finalAnswer)
-  console.log("operatorsClicked", operatorsClicked)
 });
 sub.addEventListener('click', () => {
   operatorsClicked += 1;
@@ -132,12 +145,6 @@ sub.addEventListener('click', () => {
     operation = subtract
     display.textContent = firstNum;
   }
-
-  console.log("firstNum", firstNum)
-  console.log("secondNum", secondNum)
-  console.log("operation", operation)
-  console.log("finalAnswer", finalAnswer)
-  console.log("operatorsClicked", operatorsClicked)
 });
 mul.addEventListener('click', () => {
   operatorsClicked += 1
@@ -161,12 +168,6 @@ mul.addEventListener('click', () => {
     operation = multiply;
     display.textContent = firstNum;
   }
-
-  console.log("firstNum", firstNum)
-  console.log("secondNum", secondNum)
-  console.log("operation", operation)
-  console.log("finalAnswer", finalAnswer)
-  console.log("operatorsClicked", operatorsClicked)
 });
 dvi.addEventListener('click', () => {
   operatorsClicked += 1
@@ -190,12 +191,6 @@ dvi.addEventListener('click', () => {
     operation = divide;
     display.textContent = firstNum;
   }
-
-  console.log("firstNum", firstNum)
-  console.log("secondNum", secondNum)
-  console.log("operation", operation)
-  console.log("finalAnswer", finalAnswer)
-  console.log("operatorsClicked", operatorsClicked)
 });
 
 equ.addEventListener('click', () => {
@@ -232,12 +227,6 @@ equ.addEventListener('click', () => {
 
     console.log(finalAnswer)
   }
-
-  console.log("firstNum", firstNum)
-  console.log("secondNum", secondNum)
-  console.log("operation", operation)
-  console.log("finalAnswer", finalAnswer)
-  console.log("operatorsClicked", operatorsClicked)
 })
 
 function clear() {
@@ -250,4 +239,14 @@ function clear() {
 }
 ce.addEventListener('click', () => {
   clear();
+})
+
+function backspace() {
+  if (display.textContent.length > 0) {
+    let displayContent = display.textContent.slice(0, -1)
+    display.textContent = displayContent;
+  }
+}
+back.addEventListener('click', () => {
+  backspace()
 })

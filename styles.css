@@ -110,6 +110,7 @@ div.special {
   width: 100%;
   background-color: goldenrod;
   display: flex;
+  align-items: center;
 }
 div.special p {
   width: 33.3%;
